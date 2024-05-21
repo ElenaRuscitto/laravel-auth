@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
 
-
+        @include('guest.partials.header')
 
         @yield('content')
 

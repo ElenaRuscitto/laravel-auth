@@ -20,11 +20,15 @@
 
         <p class="pt-2">{{Auth::user()->name}}</p>
 
-        <form action="" method="POST">
+        <form
+            action="{{ route('logout') }}"
+            method="POST">
             @csrf
-            <button type="submit" class="btn btn-light"><i class="fa-solid fa-right-from-bracket"></i></button>
+            <button type="submit" class="btn btn-light">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
         </form>
      </div>
     </div>
   </nav>
-  {{-- <form action="{{rout('logout')}}" method="POST"> --}}
+
