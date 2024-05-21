@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class ProjectsController extends Controller
 {
@@ -11,7 +12,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('projects.index');
+        $projects = Project::paginate(10);
+        return view('projects.index', compact('projects'));
+
     }
 
     /**

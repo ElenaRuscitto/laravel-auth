@@ -18,7 +18,7 @@ class ProjectsTableSeeder extends Seeder
      {
 
          }
-     }
+    //  }
     // public function run(Faker $faker): void
     // {
     //     for ($i = 0; $i < 60; $i++) {
@@ -30,5 +30,5 @@ class ProjectsTableSeeder extends Seeder
 
     //         $new_project->save();
     //     }
-    }
+    //}
 }
