@@ -20,7 +20,7 @@
 
         @yield('content')
 
-
+        @include('guest.partials.footer')
 
 
     </body>
