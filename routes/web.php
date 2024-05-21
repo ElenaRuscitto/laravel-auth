@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\ProjectsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ use App\Http\Controllers\Admin\DashboardController;
 // rotte Pubbliche (Guest)
 Route::get('/', [PageController::class, 'index'])->name('home');
 
+
+
+
 // rotte Private (Admin)
 Route::middleware(['auth', 'verified'])
          ->prefix('admin')
@@ -30,6 +34,16 @@ Route::middleware(['auth', 'verified'])
             // inserisco tutte le rotte Private protette da auth - anche CRUD
             Route::get('/', [DashboardController::class, 'index'])->name('home');
          });
+
+        // rotte Crud Privata - Project
+        Route::middleware(['auth', 'verified'])
+         ->prefix('projects')
+         ->name('projects.')
+         ->group(function() {
+
+            Route::resource('projects', ProjectsController::class);
+         });
+
 
 
 
