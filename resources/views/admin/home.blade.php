@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+{{-- @include('admin.partials.aside') --}}
+
 
 @section('content')
 

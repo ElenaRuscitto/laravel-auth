@@ -3,8 +3,16 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container my-container">
         <h1 class="text-center my-5">I miei proggetti</h1>
+
+        <a class=" d-flex flex-end" href="{{route('admin.projects.create')}}">
+
+                <i class="fa-solid fa-plus"></i>
+                Aggiungi Progetto
+
+        </a>
+
 
         <table class="table table-striped">
 
@@ -15,6 +23,7 @@
                     <th scope="col">Tipo</th>
                     <th scope="col">Link</th>
                     <th scope="col">Descrizione</th>
+                    <th scope="col">Azioni</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,10 +34,26 @@
                             <td>{{$project->type}}</td>
                             <td>{{$project->link}}</td>
                             <td class="w-50">{{$project->description}}</td>
+                            <td class="d-flex">
+                                <form action="" method="POST">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                </form>
+
+                                <form action="" method="POST">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
+
+
                     @endforeach
 
                 </tbody>
+
 
         </table>
 

@@ -1,1 +1,19 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+@import 'partials/aside.scss';
+
+header {
+    height: 80px;
+    background-color: rgb(57, 62, 70) !important;
+}
+
+
+
+// body > div {
+//     margin-left: 180px !important;
+
+// }
+
+.my-container {
+    margin-top: 350px !important;
+    margin-left: 170px !important;
+}
