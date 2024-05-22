@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\Admin\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,16 +33,13 @@ Route::middleware(['auth', 'verified'])
 
             // inserisco tutte le rotte Private protette da auth - anche CRUD
             Route::get('/', [DashboardController::class, 'index'])->name('home');
+            Route::resource('projects', ProjectController::class);
+
+
+            // rotte CRUD
          });
 
-        // rotte Crud Privata - Project
-        Route::middleware(['auth', 'verified'])
-         ->prefix('projects')
-         ->name('projects.')
-         ->group(function() {
 
-            Route::resource('projects', ProjectsController::class);
-         });
 
 
 

@@ -12,9 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('home')}}" target="_blank">Vai al Sito</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('projects.projects.index')}}">Vedi i Progetti</a>
-          </li>
+          {{-- <li class="nav-item">
+            <a class="nav-link" href="{{route('project.projects.index')}}">Vedi i Progetti</a>
+          </li> --}}
 
         </ul>
       </div>

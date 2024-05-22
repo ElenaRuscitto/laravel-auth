@@ -10,7 +10,7 @@
 
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
+
                     <th scope="col">Titolo</th>
                     <th scope="col">Tipo</th>
                     <th scope="col">Link</th>
@@ -20,11 +20,11 @@
                 <tbody>
                     @foreach ($projects as $project )
                         <tr>
-                            <th scope="row">{{$project->id}}</th>
-                            <td>{{$project->title}}</td>
+
+                            <th>{{$project->title}}</th>
                             <td>{{$project->type}}</td>
-                            <td>{{$project->href}}</td>
-                            <td>{{$project->description}}</td>
+                            <td>{{$project->link}}</td>
+                            <td class="w-50">{{$project->description}}</td>
                         </tr>
                     @endforeach
 
