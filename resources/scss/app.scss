@@ -2,10 +2,17 @@
 @import 'partials/aside.scss';
 
 header {
-    height: 80px;
-    background-color: rgb(57, 62, 70) !important;
+    height: 85px;
+    background-color: rgb(26, 38, 57) !important;
 }
 
+.my-navbar {
+    background-color: rgb(26, 38, 57) !important;
+    color: white;
+    a {
+        color: white;
+    }
+}
 
 
 // body > div {
@@ -14,6 +21,19 @@ header {
 // }
 
 .my-container {
-    margin-top: 100px !important;
+    margin-top: 97px !important;
     margin-left: 170px !important;
+}
+
+input,
+textarea {
+    border: none !important;
+    outline: none !important;
+
+
+}
+
+.my-intest {
+    background-color: rgb(89, 110, 121) !important;
+    color: white;
 }

@@ -19,6 +19,7 @@
             </div>
         @endif
 
+
         {{-- messaggio di cancellazione avvenuta del progetto --}}
         @if(session('error'))
             <div class="alert alert-danger" role="alert">
@@ -92,7 +93,7 @@
             </div>
 
             <div>
-                <button class="btn btn-success " type="submit">Aggiungi Progetto</button>
+                <button class="btn btn-primary " type="submit">Aggiungi Progetto</button>
             </div>
         </form>
     </div>
