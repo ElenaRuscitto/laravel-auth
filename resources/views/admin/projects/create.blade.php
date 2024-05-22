@@ -19,7 +19,12 @@
             </div>
         @endif
 
-
+        {{-- messaggio di cancellazione avvenuta del progetto --}}
+        @if(session('error'))
+            <div class="alert alert-danger" role="alert">
+            {{session('error')}}
+            </div>
+        @endif
 
         <form action="{{route('admin.projects.store')}}" method="POST">
             @csrf
@@ -28,10 +33,12 @@
                 <label for="title" class="form-label">Titolo</label>
                 <input
                     type="text"
-                    class="form-control @error('title')is invalid @enderror" id="title"
+                    class="form-control @error('title') is-invalid @enderror"
+                    id="title"
                     aria-describedby="emailHelp"
                     name="title"
                     value="{{old('title')}}">
+
                     @error('title')
                         <small class="text-danger">
                             {{$message}}
@@ -43,30 +50,45 @@
                 <label for="type" class="form-label">Tipo</label>
                 <input
                     type="text"
-                    class="form-control @error('type')is invalid @enderror" id="type"
+                    class="form-control @error('type') is-invalid @enderror"
+                    id="type"
                     aria-describedby="emailHelp"
                     name="type"
                     value="{{old('type')}}">
+                    @error('type')
+                        <small class="text-danger">
+                            {{$message}}
+                        </small>
+                    @enderror
             </div>
 
             <div class="mb-3">
                 <label for="link" class="form-label">Link</label>
                 <input
                     type="text"
-                    class="form-control @error('link')is invalid @enderror" id="link"
+                    class="form-control @error('link') is-invalid @enderror"
+                    id="link"
                     aria-describedby="emailHelp"
                     name="link"
                     value="{{old('link')}}">
+                    @error('link')
+                        <small class="text-danger">
+                            {{$message}}
+                        </small>
+                    @enderror
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea
                     type="text"
-                    class="form-control @error('description')is invalid @enderror" id="description"
+                    class="form-control @error('description')is-invalid @enderror"
+                    id="description"
                     aria-describedby="emailHelp"
                     name="description"
-                    value="{{old('description')}}"></textarea>
+                    value="{{old('description')}}">
+                </textarea>
+
             </div>
 
             <div>

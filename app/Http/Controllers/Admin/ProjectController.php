@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Functions\Helper as Help;
 
 class ProjectController extends Controller
 {
@@ -31,7 +32,27 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $exixts = Project::where('title', $form_data['title'])->first();
+
+            if($exixts) {
+
+                return redirect()->route('admin.projects.create')->with('error', 'Progetto già esistente!');
+
+            } else {
+
+                $new_project = new Project();
+                $form_data['slug'] = Help::generateSlug($form_data['title'], Project::class);
+
+                $new_project->fill($form_data);
+
+                $new_project->save();
+
+                return redirect()->route('admin.projects.index')->with('success', 'Categoria aggiunta correttamente!');
+
+            }
+
     }
 
     /**

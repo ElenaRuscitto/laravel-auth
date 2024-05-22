@@ -13,6 +13,13 @@
 
         </a>
 
+        {{-- messaggio di aggiunta del progetto --}}
+        @if(session('success'))
+        <div class="alert alert-success my-3" role="alert">
+           {{session('success')}}
+        </div>
+        @endif
+
 
         <table class="table table-striped">
 
@@ -36,13 +43,13 @@
                             <td class="w-50">{{$project->description}}</td>
                             <td class="d-flex">
                                 <form action="" method="POST">
-                                    <button type="submit">
+                                    <button type="submit" class="btn btn-warning">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </form>
 
                                 <form action="" method="POST">
-                                    <button type="submit">
+                                    <button type="submit" class="btn btn-danger">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
