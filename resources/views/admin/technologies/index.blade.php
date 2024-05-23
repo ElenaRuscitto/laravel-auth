@@ -4,24 +4,38 @@
 
 
 <div class="container my-container">
+    <div class="col-12">
+        @if (session('successo'))
+            <div class="alert alert-success h-25" role="alert">
+                <p>{{ session('successo') }}</p>
+            </div>
+        @endif
+
+        @if (session('errore'))
+            <div class="alert alert-danger" role="alert">
+            <p>{{ session('errore') }}</p>
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            </div>
+        @endif
+    </div>
     <div class="row row-cols-2 ">
+
+
 
 
 
         {{-- colonna Technology--}}
         <div class="col">
 
-            @if (session('successo'))
-                <div class="alert alert-success h-25" role="alert">
-                    <p>{{ session('successo') }}</p>
-                </div>
-            @endif
-
-            @if (session('errore'))
-                <div class="alert alert-danger" role="alert">
-                <p>{{ session('errore') }}</p>
-                </div>
-            @endif
 
             <div class="px-2 my-card rounded-3 pb-1">
 
@@ -89,17 +103,6 @@
         {{-- colonna Type--}}
         <div class="col">
 
-            @if (session('success'))
-                <div class="alert alert-success h-25" role="alert">
-                    <p>{{ session('success') }}</p>
-                </div>
-            @endif
-
-            @if (session('error'))
-                <div class="alert alert-danger" role="alert">
-                <p>{{ session('error') }}</p>
-                </div>
-            @endif
 
             <div class="px-2 my-card rounded-3 pb-1">
 
