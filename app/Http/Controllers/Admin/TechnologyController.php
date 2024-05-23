@@ -64,7 +64,7 @@ class TechnologyController extends Controller
         $exists = Technology::where('name', $val_data['name'])->first();
 
         if ($exists) {
-            return redirect()->route('admin.technologies.index')->with('error', 'La tecnologia ' . $val_data['name'] . ' é già presente');
+            return redirect()->route('admin.technologies.index')->with('errore', 'La tecnologia ' . $val_data['name'] . ' é già presente');
         } else {
 
             if ($val_data['name'] === $technology->name) {
@@ -75,7 +75,7 @@ class TechnologyController extends Controller
 
             $technology->update($val_data);
 
-            return redirect()->route('admin.technologies.index')->with('success', 'Tecnologia ' . $technology->name . ' modificata con successo');
+            return redirect()->route('admin.technologies.index')->with('successo', 'Tecnologia ' . $technology->name . 'è stata modificata con successo');
         }
     }
 

@@ -71,7 +71,7 @@ class TypeController extends Controller
 
             $type->update($val_data);
 
-            return redirect()->route('admin.technologies.index')->with('success', 'Tipo ' . $type->name . ' modificato con successo');
+            return redirect()->route('admin.technologies.index')->with('success', 'Tipo ' . $type->name . 'è stato modificato con successo');
         }
     }
 

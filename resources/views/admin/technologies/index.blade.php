@@ -6,10 +6,24 @@
 <div class="container my-container">
     <div class="row row-cols-2 ">
 
+
+
         {{-- colonna Technology--}}
         <div class="col">
 
-            <div class="px-2 bg-dark rounded-3 pb-1">
+            @if (session('successo'))
+                <div class="alert alert-success h-25" role="alert">
+                    <p>{{ session('successo') }}</p>
+                </div>
+            @endif
+
+            @if (session('errore'))
+                <div class="alert alert-danger" role="alert">
+                <p>{{ session('errore') }}</p>
+                </div>
+            @endif
+
+            <div class="px-2 my-card rounded-3 pb-1">
 
                 <h2 class="py-3 text-white rounded-3 fw-bold fs-2 p-3 mt-3">Lista Tecnologie</h2>
                 <table class="table rounded-3">
@@ -75,7 +89,19 @@
         {{-- colonna Type--}}
         <div class="col">
 
-            <div class="px-2 bg-dark rounded-3 pb-1">
+            @if (session('success'))
+                <div class="alert alert-success h-25" role="alert">
+                    <p>{{ session('success') }}</p>
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                <p>{{ session('error') }}</p>
+                </div>
+            @endif
+
+            <div class="px-2 my-card rounded-3 pb-1">
 
                 <h2 class="py-3 text-white rounded-3 fw-bold fs-2 p-3 mt-3">Lista Tipi</h2>
                 <table class="table rounded-3">
