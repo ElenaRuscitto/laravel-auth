@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Technology;
 use App\Models\Type;
 use App\Functions\Helper as Help;
+use App\Http\Requests\TechnologyRequest;
 
 class TechnologyController extends Controller
 {
@@ -56,16 +57,35 @@ class TechnologyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TechnologyRequest $request, Technology $technology)
     {
-        //
+        $val_data = $request->all();
+
+        $exists = Technology::where('name', $val_data['name'])->first();
+
+        if ($exists) {
+            return redirect()->route('admin.technologies.index')->with('error', 'La tecnologia ' . $val_data['name'] . ' é già presente');
+        } else {
+
+            if ($val_data['name'] === $technology->name) {
+                $val_data['slug'] = $technology->slug;
+            } else {
+                $val_data['slug'] = Help::generateSlug($val_data['name'], Technology::class);
+            }
+
+            $technology->update($val_data);
+
+            return redirect()->route('admin.technologies.index')->with('success', 'Tecnologia ' . $technology->name . ' modificata con successo');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return redirect()->route('admin.technologies.index')->with('success', 'Tecnologia ' . $technology->name . ' eliminata con successo');
     }
 }
