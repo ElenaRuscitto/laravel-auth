@@ -22,4 +22,10 @@ class Helper
         }
         return $slug;
     }
+
+
+    public static function formDate($data) {
+        $data = date_create($data);
+        return date_format($data, 'd/m/Y');
+    }
 }

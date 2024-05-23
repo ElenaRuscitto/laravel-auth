@@ -4,8 +4,8 @@
 @section('content')
 
     <div class="container my-container">
-        <div class="card">
-            <div class="card-header my-intest">
+        <div class="">
+            <div class=" ">
                 <h1 class="text-center ">I miei proggetti</h1>
             </div>
 
