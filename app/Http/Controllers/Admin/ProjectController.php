@@ -50,7 +50,7 @@ class ProjectController extends Controller
 
                 $new_project->save();
 
-                return redirect()->route('admin.projects.index')->with('success', 'Categoria aggiunta correttamente!');
+                return redirect()->route('admin.projects.index')->with('success', 'Progetto aggiunto correttamente!');
 
             }
 
@@ -88,7 +88,7 @@ class ProjectController extends Controller
 
         if($exist) {
 
-            return redirect()->route('admin.projects.index')->with('errorexist', 'Progetto già esistente');
+            return redirect()->route('admin.projects.index')->with('error', 'Progetto già esistente');
 
         } else {
             if($form_data['title'] === $project->title){

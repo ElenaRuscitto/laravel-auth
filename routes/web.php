@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
-
+use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\Admin\TypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,8 @@ Route::middleware(['auth', 'verified'])
             // inserisco tutte le rotte Private protette da auth - anche CRUD
             Route::get('/', [DashboardController::class, 'index'])->name('home');
             Route::resource('projects', ProjectController::class);
-
+            Route::resource('technologies', TechnologyController::class)->except(['show', 'create', 'edit']);
+            Route::resource('types', TypeController::class)->except(['index', 'show', 'create', 'edit']);
 
             // rotte CRUD
          });
