@@ -104,6 +104,12 @@
 
                                     <td class="d-flex justify-content-center align-items-center my-4 ">
 
+
+                                             <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary me-2">
+                                                <i
+                                            class="fa-solid fa-eye"></i>
+                                        </a>
+
                                             <button
                                                 type="submit"
                                                 class="btn btn-warning"
@@ -114,13 +120,15 @@
                                 </form>
                                             <form
                                                 action="{{route('admin.projects.destroy', $project)}}"
-                                                method="post">
+                                                method="post"
+                                                onsubmit="return confirm('Sei sicuro di voler eliminare . {{$project->name}} . ?')">
                                                 @csrf
                                                 @method('DELETE')
                                                     <button
                                                         type="submit"
-                                                        class="btn btn-danger mx-2"><i
-                                                        class="fa-solid fa-trash"></i>
+                                                        class="btn btn-danger mx-2"
+                                                        >
+                                                        <i class="fa-solid fa-trash"></i>
                                                     </button>
                                             </form>
 

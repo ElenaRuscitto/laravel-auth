@@ -33,6 +33,10 @@ class TechnologyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+
+
+    //  AGGIUNTA DI NUOVA TECNOLOGIA
     public function store(TechnologyRequest $request)
     {
         $form_data = $request->all();
@@ -75,6 +79,10 @@ class TechnologyController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+
+
+    //  MODIFICA DELLA TECNOLOGIA
     public function update(TechnologyRequest $request, Technology $technology)
     {
         $form_data = $request->all();
@@ -82,7 +90,7 @@ class TechnologyController extends Controller
         $exists = Technology::where('name', $form_data['name'])->first();
 
         if ($exists) {
-            return redirect()->route('admin.technologies.index')->with('error', 'Il tipo ' . $form_data['name'] . ' é già presente');
+            return redirect()->route('admin.technologies.index')->with('error', 'La Tecnologia ' . $form_data['name'] . ' é già presente');
         } else {
             if ($form_data['name'] === $technology->name) {
                 $form_data['slug'] = $technology->slug;
@@ -92,7 +100,7 @@ class TechnologyController extends Controller
 
             $technology->update($form_data);
 
-            return redirect()->route('admin.technologies.index')->with('success', 'Tipo ' . $technology->name . 'è stato modificato con successo');
+            return redirect()->route('admin.technologies.index')->with('success', 'La Tecnologia ' . $technology->name . 'è stata modificata con successo');
         }
     }
 
