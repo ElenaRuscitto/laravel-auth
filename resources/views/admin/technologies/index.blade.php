@@ -61,13 +61,13 @@
                                     <th>{{$technology->id}}</th>
                                     <td>
                                         <input
-                                        class="@error('name')is-invalid @enderror"
+                                        class=""
                                         type="text"
                                         name="id"
                                         value="{{ $technology->name }}">
-                                        @error('name')
+                                        {{-- @error('name')
                                             <p class="text-danger text-small">{{$message}}</p>
-                                        @enderror
+                                        @enderror --}}
                                     </td>
                                     <td>
                                         <button

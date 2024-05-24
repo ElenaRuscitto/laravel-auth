@@ -9,11 +9,23 @@
                 <h1 class="text-center ">I miei proggetti</h1>
             </div>
 
-            @if(session('deleted'))
+            {{-- @if(session('deleted'))
                 <div class="alert alert-success" role="alert">
                 {{ session('deleted')}}
                 </div>
-            @endif
+            @endif --}}
+
+            @if (session('successo'))
+            <div class="alert alert-success h-25" role="alert">
+                <p>{{ session('successo') }}</p>
+            </div>
+        @endif
+
+        @if (session('errore'))
+            <div class="alert alert-danger" role="alert">
+            <p>{{ session('errore') }}</p>
+            </div>
+        @endif
 
             <div class="list-group list-group-flush ">
                 <a class="d-flex justify-content-end  " href="{{route('admin.projects.create')}}">
@@ -56,11 +68,17 @@
                                     >
                                     @csrf
                                     @method('PUT')
+                                    {{-- <td class="align-content-center">
+                                        <input type="text" class="form-control @error('projects.'.$project->id.'.title') is-invalid @enderror" id="title-{{$project->id}}" name="projects[{{$project->id}}][title]" value="{{$project->title}}">
+                                        @error('projects.'.$project->id.'.title')
+                                        <p class="text-danger text-small">{{$message}}</p>
+                                        @enderror
+                                        </td> --}}
                                     <th class=" align-content-center ">
                                         <input
                                             type="text"
                                             class="form-control  @error('title') is-invalid @enderror"
-                                            id="'title"
+
                                             name="title"
                                             value="{{$project->title}}">
                                             @error('title')
@@ -72,7 +90,7 @@
                                         <input
                                             type="text"
                                             class="form-control  @error('type') is-invalid @enderror"
-                                            id="'type"
+
                                             name="type"
                                             value="{{$project->type}}">
                                             @error('type')
@@ -84,7 +102,7 @@
                                         <input
                                             type="text"
                                             class="form-control @error('link') is-invalid @enderror"
-                                            id="'link"
+
                                             name="link"
                                             value="{{$project->link}}">
                                             @error('link')
@@ -97,7 +115,7 @@
                                             cols="30"
                                             rows="3"
                                             class="form-control "
-                                            id="description"
+
                                             name="description"
                                             value="">{{$project->description}}</textarea>
                                     </td>
