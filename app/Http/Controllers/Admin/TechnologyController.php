@@ -33,9 +33,27 @@ class TechnologyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TechnologyRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $exists = Technology::where('name', $form_data['name'])->first();
+
+        if ($exists) {
+
+            return redirect()->route('admin.technologies.index')->with('error', 'La Tecnologia ' . $form_data['name'] . ' é già presente');
+
+        } else {
+            $form_data['slug'] = Help::generateSlug($form_data['name'], Technology::class);
+            $technology = new Technology;
+            $technology->fill($form_data);
+
+            $technology->save();
+
+            return redirect()->route('admin.technologies.index')->with('success', 'Tecnologia ' . $technology->name . ' aggiunta con successo');
+
+
+        }
     }
 
     /**
@@ -59,23 +77,22 @@ class TechnologyController extends Controller
      */
     public function update(TechnologyRequest $request, Technology $technology)
     {
-        $val_data = $request->all();
+        $form_data = $request->all();
 
-        $exists = Technology::where('name', $val_data['name'])->first();
+        $exists = Technology::where('name', $form_data['name'])->first();
 
         if ($exists) {
-            return redirect()->route('admin.technologies.index')->with('errore', 'La tecnologia ' . $val_data['name'] . ' é già presente');
+            return redirect()->route('admin.technologies.index')->with('error', 'Il tipo ' . $form_data['name'] . ' é già presente');
         } else {
-
-            if ($val_data['name'] === $technology->name) {
-                $val_data['slug'] = $technology->slug;
+            if ($form_data['name'] === $technology->name) {
+                $form_data['slug'] = $technology->slug;
             } else {
-                $val_data['slug'] = Help::generateSlug($val_data['name'], Technology::class);
+                $form_data['slug'] = Help::generateSlug($form_data['name'], Type::class);
             }
 
-            $technology->update($val_data);
+            $technology->update($form_data);
 
-            return redirect()->route('admin.technologies.index')->with('successo', 'Tecnologia ' . $technology->name . 'è stata modificata con successo');
+            return redirect()->route('admin.technologies.index')->with('success', 'Tipo ' . $technology->name . 'è stato modificato con successo');
         }
     }
 

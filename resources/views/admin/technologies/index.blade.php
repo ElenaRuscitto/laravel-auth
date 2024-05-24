@@ -44,8 +44,8 @@
                     <thead>
                     <tr>
                         <th class="">Id</th>
-                        <th class="">Name</th>
-                        <th class="" scope="col">Azioni</th>
+                        <th class="">Nome</th>
+                        <th class="ps-4" scope="col">Azioni</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -61,10 +61,14 @@
                                     <th>{{$technology->id}}</th>
                                     <td>
                                         <input
-                                        class="transparent-input"
+                                        class="@error('name')is-invalid @enderror"
                                         type="text"
-                                        name="name"
-                                        value="{{ $technology->name }}"></td>
+                                        name="id"
+                                        value="{{ $technology->name }}">
+                                        @error('name')
+                                            <p class="text-danger text-small">{{$message}}</p>
+                                        @enderror
+                                    </td>
                                     <td>
                                         <button
                                             type="submit"
@@ -74,9 +78,6 @@
                                         </button>
 
                             </form>
-
-
-
 
 
                                         <form
@@ -95,6 +96,27 @@
 
                     </tbody>
                 </table>
+
+            </div>
+
+
+            {{-- aggiungi nuova Tecnologia --}}
+
+            <div class="px-2 mt-5 rounded-3 pb-1">
+
+                <h2 class="py-3  text-myColor rounded-3 fw-bold fs-2 p-3 mt-3">Aggiungi una nuova Tecnologia</h2>
+                <form action="{{ route('admin.technologies.store') }}" method="POST">
+                    @csrf
+
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Inserisci un nome*</label>
+                      <input type="text" id="title" name="name" class="form-control bg-secondary-subtle"
+                        value="{{ old('name') }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i></button>
+                  </form>
+
             </div>
 
         </div>
@@ -106,13 +128,13 @@
 
             <div class="px-2 my-card rounded-3 pb-1">
 
-                <h2 class="py-3 text-white rounded-3 fw-bold fs-2 p-3 mt-3">Lista Tipi</h2>
+                <h2 class="py-3 text-white  rounded-3 fw-bold fs-2 p-3 mt-3">Lista Tipi</h2>
                 <table class="table rounded-3">
                     <thead>
                     <tr>
                         <th class="">Id</th>
-                        <th class="">Name</th>
-                        <th class="" scope="col">Azioni</th>
+                        <th class="">Nome</th>
+                        <th class="ps-4" scope="col">Azioni</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -128,10 +150,14 @@
                                     <th>{{$type->id}}</th>
                                     <td>
                                         <input
-                                        class="transparent-input"
+                                        class="@error('name') is-invalid @enderror"
                                         type="text"
                                         name="name"
-                                        value="{{ $type->name }}"></td>
+                                        value="{{ $type->name }}">
+                                        @error('name')
+                                            <p class="text-danger text-small">{{$message}}</p>
+                                        @enderror
+                                    </td>
                                     <td>
                                         <button
                                             type="submit"
@@ -162,6 +188,26 @@
 
                     </tbody>
                 </table>
+            </div>
+
+
+            {{-- aggiungi nuovo Tipo --}}
+
+            <div class="px-2 mt-5 rounded-3 pb-1">
+
+                <h2 class="py-3  text-myColor rounded-3 fw-bold fs-2 p-3 mt-3">Aggiungi un nuovo Tipo</h2>
+                <form action="{{ route('admin.types.store') }}" method="POST">
+                    @csrf
+
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Inserisci un nome*</label>
+                      <input type="text" id="title" name="name" class="form-control bg-secondary-subtle"
+                        value="{{ old('name') }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i></button>
+                  </form>
+
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@
                     <ul>
                         <li>
                             <a href="{{ route('admin.technologies.index') }}">
-                              <i class="fa-regular fa-rectangle-list me-2"></i>
+                              <i class="fa-regular fa-rectangle-list"></i>
                               Tecnologie e Tipi
                             </a>
                           </li>

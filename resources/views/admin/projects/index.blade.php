@@ -38,9 +38,9 @@
                     <thead>
                     <tr>
 
-                        <th scope="col">Titolo</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Link</th>
+                        <th scope="col">Titolo (*)</th>
+                        <th scope="col">Tipo (*)</th>
+                        <th scope="col">Link (*)</th>
                         <th scope="col">Descrizione</th>
                         <th scope="col">Azioni</th>
                     </tr>
@@ -63,6 +63,9 @@
                                             id="'title"
                                             name="title"
                                             value="{{$project->title}}">
+                                            @error('title')
+                                                <p class="text-danger text-small">{{$message}}</p>
+                                            @enderror
                                     </th>
 
                                     <td class=" align-content-center ">
@@ -72,6 +75,9 @@
                                             id="'type"
                                             name="type"
                                             value="{{$project->type}}">
+                                            @error('type')
+                                                <p class="text-danger text-small">{{$message}}</p>
+                                            @enderror
                                     </td>
 
                                     <td class=" align-content-center ">
@@ -81,6 +87,9 @@
                                             id="'link"
                                             name="link"
                                             value="{{$project->link}}">
+                                            @error('link')
+                                                <p class="text-danger text-small">{{$message}}</p>
+                                            @enderror
                                     </td>
 
                                     <td class="w-50 align-content-center">

@@ -16,7 +16,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -30,9 +30,24 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TechnologyRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $exists = Type::where('name', $form_data['name'])->first();
+
+        if ($exists) {
+
+            return redirect()->route('admin.technologies.index')->with('error', 'Il tipo ' . $form_data['name'] . ' é già presente');
+
+        } else {
+            $form_data['slug'] = Help::generateSlug($form_data['name'], Type::class);
+            $type = new Type;
+            $type->fill($form_data);
+            $type->save();
+
+            return redirect()->route('admin.technologies.index')->with('success', 'Tipo ' . $type->name . ' aggiunto con successo');;
+        }
     }
 
     /**
@@ -56,20 +71,20 @@ class TypeController extends Controller
      */
     public function update(TechnologyRequest $request, Type $type)
     {
-        $val_data = $request->all();
+        $form_data = $request->all();
 
-        $exists = Type::where('name', $val_data['name'])->first();
+        $exists = Type::where('name', $form_data['name'])->first();
 
         if ($exists) {
-            return redirect()->route('admin.technologies.index')->with('error', 'Il tipo ' . $val_data['name'] . ' é già presente');
+            return redirect()->route('admin.technologies.index')->with('error', 'Il tipo ' . $form_data['name'] . ' é già presente');
         } else {
-            if ($val_data['name'] === $type->name) {
-                $val_data['slug'] = $type->slug;
+            if ($form_data['name'] === $type->name) {
+                $form_data['slug'] = $type->slug;
             } else {
-                $val_data['slug'] = Help::generateSlug($val_data['name'], Type::class);
+                $form_data['slug'] = Help::generateSlug($form_data['name'], Type::class);
             }
 
-            $type->update($val_data);
+            $type->update($form_data);
 
             return redirect()->route('admin.technologies.index')->with('success', 'Tipo ' . $type->name . 'è stato modificato con successo');
         }
